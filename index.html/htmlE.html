@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ecuaciones paso a paso · Aula Clara</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+:root{--bg:#F1F6FB;--grid:#D3E1F0;--sheet:#FFFFFF;--ink:#1B2A5B;--mut:#56638A;--red:#D64550;--hl:#FFE45C;--hlt:#1B2A5B;--line:#C5D4E8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#13203B;--grid:#20325A;--sheet:#1B2C50;--ink:#E8EEFF;--mut:#A3B0D2;--red:#FF7C87;--hl:#F2D64B;--hlt:#13203B;--line:#33487A}}
+:root[data-theme="dark"]{--bg:#13203B;--grid:#20325A;--sheet:#1B2C50;--ink:#E8EEFF;--mut:#A3B0D2;--red:#FF7C87;--hl:#F2D64B;--hlt:#13203B;--line:#33487A}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background-color:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px;color:var(--ink);font:17px/1.6 "Atkinson Hyperlegible",system-ui,sans-serif}
+main{max-width:860px;margin:0 auto;padding:28px 16px 64px 22px}
+h1,h2,h3{font-family:"Bricolage Grotesque","Trebuchet MS",sans-serif;line-height:1.15;margin:0}
+h1{font-size:clamp(2.1rem,7vw,3.4rem);font-weight:800}
+h2{font-size:1.8rem;font-weight:800;margin-bottom:12px}
+h3{font-size:1.15rem;font-weight:600;margin:18px 0 6px}
+.lead{color:var(--mut);max-width:60ch;margin:10px 0 20px}
+.sheet{background:var(--sheet);border:1px solid var(--line);border-left:3px solid var(--red);padding:20px}
+section{margin-top:44px}
+section>.sheet p{max-width:70ch}
+label{font-weight:700}
+.eq{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.eq input{flex:1 1 260px;min-width:0;font:600 clamp(1.3rem,5vw,1.9rem)/1.3 "Bricolage Grotesque",sans-serif;color:var(--ink);background:transparent;border:0;border-bottom:3px solid var(--ink);padding:6px 2px;border-radius:0}
+button,.chip{font:inherit;cursor:pointer;color:var(--ink);background:transparent;border:2px solid var(--ink);padding:8px 16px;border-radius:0}
+button.go{background:var(--ink);color:var(--bg);font-weight:700}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}
+.chip{padding:4px 12px;font-size:.95rem;border-color:var(--line)}
+.chip:hover{border-color:var(--ink)}
+.seg{display:inline-flex;margin:16px 0 4px}
+.seg button{border-width:2px;margin-right:-2px;padding:5px 12px;font-size:.92rem}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.steps{list-style:none;padding:0;margin:14px 0 0;counter-reset:s}
+.steps li{counter-increment:s;position:relative;padding:10px 0 10px 40px;border-top:1px dashed var(--line)}
+.steps li::before{content:counter(s);position:absolute;left:0;top:10px;width:28px;height:28px;border:2px solid var(--red);color:var(--red);font-weight:700;display:grid;place-items:center;border-radius:50%}
+.steps p{margin:2px 0}
+.tag{display:inline-block;min-width:26px;margin-right:8px;font-size:.8rem;font-weight:700;color:var(--mut)}
+.en{color:var(--mut)}
+.lang-es .en,.lang-en .es{display:none}
+.lang-en .en{color:var(--ink)}
+.answer{margin-top:14px;padding:14px;background:var(--hl);color:var(--hlt);font-weight:700;font-size:1.15rem}
+.answer .en{color:var(--hlt);font-weight:400;font-size:1rem}
+.err{margin-top:14px;padding:12px;border:2px solid var(--red)}
+ul{padding-left:1.2rem;max-width:70ch}
+li{margin:4px 0}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:420px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tfoot td{font-weight:700;border-top:2px solid var(--ink)}
+.calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:10px 0 16px}
+.calc input{width:100%;font:inherit;padding:6px;color:var(--ink);background:transparent;border:2px solid var(--ink);border-radius:0}
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.res div{border-top:3px solid var(--ink);padding-top:6px}
+.res b{display:block;font:800 1.7rem "Bricolage Grotesque",sans-serif}
+.note{color:var(--mut);font-size:.92rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>Ecuaciones paso a paso<br><span style="color:var(--mut);font-size:.55em;font-weight:600">Step-by-step equations</span></h1>
+  <p class="lead">Escribe una ecuación de 1.er o 2.º grado y mira cómo se resuelve, explicada en español y en inglés.</p>
+</header>
+
+<div class="sheet" id="solver">
+  <label for="eq">Tu ecuación / Your equation</label>
+  <div class="eq">
+    <input id="eq" value="x² − 5x + 6 = 0" autocomplete="off" spellcheck="false" inputmode="text" aria-describedby="hint">
+    <button class="go" id="go">Resolver / Solve</button>
+  </div>
+  <p class="note" id="hint">Usa x, ^ o ² para potencias, paréntesis y fracciones simples como 1/2. Ej.: 3(x−2) = x+4</p>
+  <div class="chips" id="chips"></div>
+  <div class="seg" role="group" aria-label="Idioma / Language">
+    <button data-l="both" aria-pressed="true">ES + EN</button>
+    <button data-l="es" aria-pressed="false">Español</button>
+    <button data-l="en" aria-pressed="false">English</button>
+  </div>
+  <div id="out" aria-live="polite"></div>
+</div>
+
+<section id="objetivo">
+  <h2>Objetivo</h2>
+  <div class="sheet">
+    <p>Ayudar a estudiantes de secundaria a resolver ecuaciones de primer y segundo grado entendiendo cada paso, no solo copiando el resultado. La explicación en dos idiomas apoya también a quienes estudian en colegios bilingües.</p>
+    <ul>
+      <li>Resolver y comprobar la solución de cada ecuación.</li>
+      <li>Explicar el procedimiento en español e inglés.</li>
+      <li>Servir como herramienta de práctica para un servicio de apoyo escolar.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="alcance">
+  <h2>Alcance</h2>
+  <div class="sheet cols">
+    <div>
+      <h3>Incluye</h3>
+      <ul>
+        <li>Ecuaciones lineales con la incógnita en ambos lados, paréntesis y fracciones simples.</li>
+        <li>Ecuaciones cuadráticas por fórmula general, con discriminante.</li>
+        <li>Casos especiales: solución doble, sin solución real, sin solución o infinitas.</li>
+        <li>Comprobación de cada resultado.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>No incluye (versión 1)</h3>
+      <ul>
+        <li>Sistemas de ecuaciones y desigualdades.</li>
+        <li>Incógnitas en denominadores o dentro de raíces.</li>
+        <li>Grados mayores que 2 o más de una incógnita.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Público y plataforma</h3>
+      <ul>
+        <li>Estudiantes de 12 a 16 años, docentes y familias.</li>
+        <li>Página web en HTML, sin servidor ni instalación.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="empresa">
+  <h2>Creación de una empresa de apoyo escolar</h2>
+  <div class="sheet">
+    <p>Propuesta: <b>Aula Clara</b> (nombre editable), un centro de refuerzo en matemáticas con grupos pequeños que usa esta aplicación para practicar y corregir en clase.</p>
+    <ol class="steps" style="margin-top:8px">
+      <li><b>Definir el servicio.</b> Refuerzo de matemáticas en grupos de 6 a 8 alumnos, presencial y en línea. Más adelante, ciencias e inglés.</li>
+      <li><b>Formalizar el negocio.</b> Registro de la empresa, inscripción tributaria y permiso municipal del local, según las normas de tu país.</li>
+      <li><b>Armar el equipo.</b> Dos docentes a tiempo parcial y un coordinador (el fundador) que atiende a las familias.</li>
+      <li><b>Conseguir alumnos.</b> Clase de prueba gratuita, redes sociales, alianzas con colegios cercanos y asociaciones de padres.</li>
+      <li><b>Operar cada mes.</b> Evaluación inicial, clases por la tarde e informe mensual de avance a las familias.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="inversion">
+  <h2>Inversión</h2>
+  <div class="sheet">
+    <div class="wrap"><table>
+      <thead><tr><th>Concepto</th><th class="n">USD</th></tr></thead>
+      <tbody>
+        <tr><td>Ajustes de la app (dominio, hosting, mejoras)</td><td class="n">600</td></tr>
+        <tr><td>Constitución legal y permisos</td><td class="n">400</td></tr>
+        <tr><td>Equipos (2 laptops y proyector)</td><td class="n">1.500</td></tr>
+        <tr><td>Adecuación del local y mobiliario</td><td class="n">900</td></tr>
+        <tr><td>Marketing de lanzamiento</td><td class="n">500</td></tr>
+        <tr><td>Material didáctico</td><td class="n">300</td></tr>
+        <tr><td>Capital de trabajo (2 meses de costos)</td><td class="n">2.400</td></tr>
+      </tbody>
+      <tfoot><tr><td>Total inicial</td><td class="n">6.600</td></tr></tfoot>
+    </table></div>
+    <p class="note">Cifras referenciales en dólares. Ajústalas a los precios de tu ciudad antes de decidir.</p>
+  </div>
+</section>
+
+<section id="costo-beneficio">
+  <h2>Costo/beneficio</h2>
+  <div class="sheet">
+    <p>Cambia los valores para ver cómo varían la utilidad y el tiempo de recuperación de la inversión.</p>
+    <div class="calc">
+      <div><label for="al">Alumnos</label><input id="al" type="number" min="0" value="45"></div>
+      <div><label for="cu">Cuota mensual (USD)</label><input id="cu" type="number" min="0" value="40"></div>
+      <div><label for="co">Costos mensuales (USD)</label><input id="co" type="number" min="0" value="1200"></div>
+      <div><label for="iv">Inversión (USD)</label><input id="iv" type="number" min="0" value="6600"></div>
+    </div>
+    <div class="res" id="res" aria-live="polite"></div>
+    <h3>Costos mensuales del ejemplo</h3>
+    <p class="note">Docentes 700 · alquiler 250 · servicios e internet 70 · marketing 100 · materiales y otros 80 = 1.200 USD.</p>
+    <h3>Beneficios que no se miden en dinero</h3>
+    <ul>
+      <li>Mejores notas y más confianza de los alumnos en matemáticas.</li>
+      <li>Menos carga para las familias que no pueden explicar los temas en casa.</li>
+      <li>Una herramienta propia que diferencia al centro de otros de refuerzo.</li>
+    </ul>
+    <p class="note">Estimación de ejemplo: la demanda real y los precios deben validarse con una encuesta previa a las familias de la zona.</p>
+  </div>
+</section>
+</main>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+/* Polinomios [c0,c1,c2] */
+const add=(a,b)=>a.map((v,i)=>v+b[i]),sub=(a,b)=>a.map((v,i)=>v-b[i]),neg=a=>a.map(v=>-v);
+function mul(a,b){const r=[0,0,0];for(let i=0;i<3;i++)for(let j=0;j<3;j++){const p=a[i]*b[j];if(p===0)continue;if(i+j>2)throw'deg';r[i+j]+=p}return r}
+function div(a,d){if(d[1]!==0||d[2]!==0||d[0]===0)throw'sym';return a.map(v=>v/d[0])}
+function parseExpr(s){
+  const t=s.match(/\d*\.?\d+|x|[-+*\/^()]/g)||[];
+  if(!t.length||t.join('')!==s)throw'sym';
+  let i=0;const pk=()=>t[i],nx=()=>t[i++];
+  const st=k=>k!==undefined&&(k==='x'||k==='('||/^[\d.]/.test(k));
+  function expr(){let v=term();while(pk()==='+'||pk()==='-'){const o=nx(),r=term();v=o==='+'?add(v,r):sub(v,r)}return v}
+  function term(){let v=fac();while(pk()==='*'||pk()==='/'||st(pk())){if(pk()==='/'){nx();v=div(v,fac())}else{if(pk()==='*')nx();v=mul(v,fac())}}return v}
+  function fac(){if(pk()==='-'){nx();return neg(fac())}if(pk()==='+'){nx();return fac()}return pw()}
+  function pw(){let b=atom();if(pk()==='^'){nx();const e=atom();if(e[1]||e[2]||!Number.isInteger(e[0])||e[0]<0)throw'deg';let r=[1,0,0];for(let k=0;k<e[0];k++)r=mul(r,b);b=r}return b}
+  function atom(){const k=nx();if(k===undefined)throw'sym';if(k==='x')return[0,1,0];if(k==='('){const v=expr();if(nx()!==')')throw'sym';return v}if(/^[\d.]/.test(k))return[parseFloat(k),0,0];throw'sym'}
+  const r=expr();if(i!==t.length)throw'sym';return r
+}
+const m=s=>s.replace(/-/g,'−');
+function fr(n){
+  if(Math.abs(n)<1e-9)return'0';
+  if(Math.abs(n-Math.round(n))<1e-9)return m(String(Math.round(n)));
+  for(let q=2;q<=1000;q++){const p=Math.round(n*q);if(Math.abs(n-p/q)<1e-9)return m(p+'/'+q)}
+  return m(String(+n.toFixed(4)))
+}
+function ps(p){
+  let o='';
+  [[p[2],'x²'],[p[1],'x'],[p[0],'']].forEach(([k,v])=>{
+    if(Math.abs(k)<1e-9)return;
+    let c=fr(Math.abs(k));if(v&&c==='1')c='';else if(v&&c.includes('/'))c='('+c+')';
+    o+=(o?(k<0?' − ':' + '):(k<0?'−':''))+c+v
+  });
+  return o||'0'
+}
+const ev=(p,x)=>p[0]+p[1]*x+p[2]*x*x;
+const bad=(es,en)=>({es,en});
+function solve(input){
+  const orig=input.trim();
+  let s=orig.replace(/²/g,'^2').replace(/,/g,'.').replace(/[−–]/g,'-').replace(/[×·]/g,'*').replace(/÷/g,'/').replace(/\s+/g,'');
+  const lt=[...new Set((s.match(/[a-zA-Z]/g)||[]).map(c=>c.toLowerCase()))];
+  if(lt.length>1)throw bad('Usa una sola incógnita (por ejemplo x).','Use a single unknown (for example x).');
+  s=s.replace(/[a-zA-Z]/g,'x');
+  const parts=s.split('=');
+  if(parts.length!==2||!parts[0]||!parts[1])throw bad('Escribe una ecuación con un solo signo "=". Ejemplo: 2x + 3 = 11','Write an equation with a single "=" sign. Example: 2x + 3 = 11');
+  let L,R;
+  try{L=parseExpr(parts[0]);R=parseExpr(parts[1])}catch(e){
+    throw e==='deg'?bad('Por ahora solo resolvemos ecuaciones de grado 1 o 2.','For now we only solve equations of degree 1 or 2.'):bad('No pude leer la ecuación. Revisa los símbolos y paréntesis.','I could not read the equation. Check the symbols and brackets.')
+  }
+  const st=[],S=(es,en)=>st.push({es,en});
+  S(`Ecuación dada: <b>${esc(orig)}</b>`,`Given equation: <b>${esc(orig)}</b>`);
+  S(`Desarrollamos paréntesis y reducimos términos semejantes en cada lado: <b>${ps(L)} = ${ps(R)}</b>`,`Expand brackets and combine like terms on each side: <b>${ps(L)} = ${ps(R)}</b>`);
+  const D=sub(L,R).map(v=>Math.abs(v)<1e-9?0:v),[c,b,a]=D;
+  S(`Pasamos todos los términos al lado izquierdo (restamos el lado derecho): <b>${ps(D)} = 0</b>`,`Move every term to the left side (subtract the right side): <b>${ps(D)} = 0</b>`);
+  let sols=[],fin;
+  if(a!==0){
+    S(`Es de <b>2.º grado</b>, con la forma ax² + bx + c = 0, donde a = ${fr(a)}, b = ${fr(b)}, c = ${fr(c)}.`,`It is a <b>quadratic</b> equation, in the form ax² + bx + c = 0, where a = ${fr(a)}, b = ${fr(b)}, c = ${fr(c)}.`);
+    const d=b*b-4*a*c;
+    S(`Calculamos el discriminante: Δ = b² − 4ac = (${fr(b)})² − 4·(${fr(a)})·(${fr(c)}) = <b>${fr(d)}</b>.`,`Compute the discriminant: Δ = b² − 4ac = (${fr(b)})² − 4·(${fr(a)})·(${fr(c)}) = <b>${fr(d)}</b>.`);
+    if(d>1e-9){
+      const r=Math.sqrt(d),x1=(-b+r)/(2*a),x2=(-b-r)/(2*a);sols=[x1,x2];
+      S(`Como Δ > 0, hay dos soluciones reales. Aplicamos x = (−b ± √Δ) / 2a: x = (${fr(-b)} ± √${fr(d)}) / ${fr(2*a)}.`,`Since Δ > 0, there are two real solutions. Apply x = (−b ± √Δ) / 2a: x = (${fr(-b)} ± √${fr(d)}) / ${fr(2*a)}.`);
+      S(`Calculamos con + y con −: x₁ = <b>${fr(x1)}</b> y x₂ = <b>${fr(x2)}</b>.`,`Compute with + and with −: x₁ = <b>${fr(x1)}</b> and x₂ = <b>${fr(x2)}</b>.`);
+      fin={es:`x₁ = ${fr(x1)}  y  x₂ = ${fr(x2)}`,en:`x₁ = ${fr(x1)}  and  x₂ = ${fr(x2)}`};
+    }else if(Math.abs(d)<=1e-9){
+      const x=-b/(2*a);sols=[x];
+      S(`Como Δ = 0, hay una solución real doble: x = −b / 2a = ${fr(-b)} / ${fr(2*a)} = <b>${fr(x)}</b>.`,`Since Δ = 0, there is one repeated real solution: x = −b / 2a = ${fr(-b)} / ${fr(2*a)} = <b>${fr(x)}</b>.`);
+      fin={es:`x = ${fr(x)} (raíz doble)`,en:`x = ${fr(x)} (repeated root)`};
+    }else{
+      const re=-b/(2*a),im=Math.sqrt(-d)/(2*Math.abs(a));
+      S(`Como Δ < 0, no existe la raíz cuadrada real de Δ, así que no hay soluciones reales. (Con números complejos: x = ${fr(re)} ± ${fr(im)}i.)`,`Since Δ < 0, the square root of Δ is not real, so there are no real solutions. (With complex numbers: x = ${fr(re)} ± ${fr(im)}i.)`);
+      fin={es:'Sin solución real',en:'No real solution'};
+    }
+  }else if(b!==0){
+    S(`Es de <b>1.er grado</b>: ${ps(D)} = 0.`,`It is a <b>linear</b> equation: ${ps(D)} = 0.`);
+    if(c!==0){
+      S(`Pasamos el término independiente al otro lado (cambia de signo): <b>${ps([0,b,0])} = ${fr(-c)}</b>.`,`Move the constant to the other side (it changes sign): <b>${ps([0,b,0])} = ${fr(-c)}</b>.`);
+    }
+    const x=-c/b;sols=[x];
+    if(Math.abs(b-1)>1e-9){
+      S(`Dividimos ambos lados entre ${fr(b)}: x = ${fr(-c)} / ${fr(b)} = <b>${fr(x)}</b>.`,`Divide both sides by ${fr(b)}: x = ${fr(-c)} / ${fr(b)} = <b>${fr(x)}</b>.`);
+    }
+    fin={es:`x = ${fr(x)}`,en:`x = ${fr(x)}`};
+  }else if(c===0){
+    S('Todos los términos se cancelan y queda 0 = 0, que siempre es verdadero.','Everything cancels and we get 0 = 0, which is always true.');
+    fin={es:'Infinitas soluciones: cualquier número real sirve',en:'Infinitely many solutions: any real number works'};
+  }else{
+    S(`Las x se cancelan y queda ${fr(c)} = 0, que es falso.`,`The x terms cancel and we get ${fr(c)} = 0, which is false.`);
+    fin={es:'Sin solución',en:'No solution'};
+  }
+  if(sols.length){
+    const t=sols.map((x,i)=>`x${sols.length>1?['₁','₂'][i]:''} = ${fr(x)} → ${fr(ev(L,x))} = ${fr(ev(R,x))} ✓`).join(' ; ');
+    S(`<b>Comprobación</b> (sustituimos en la ecuación simplificada): ${t}`,`<b>Check</b> (substitute into the simplified equation): ${t}`);
+  }
+  return{st,fin};
+}
+const lang=()=>document.querySelector('.seg [aria-pressed=true]').dataset.l;
+function run(){
+  const out=$('out');
+  try{
+    const{st,fin}=solve($('eq').value);
+    out.className='lang-'+lang();
+    out.innerHTML='<ol class="steps">'+st.map(s=>`<li><p class="es" lang="es"><span class="tag">ES</span>${s.es}</p><p class="en" lang="en"><span class="tag">EN</span>${s.en}</p></li>`).join('')+`</ol><div class="answer"><p class="es" lang="es" style="margin:0"><span class="tag">ES</span>Respuesta: ${fin.es}</p><p class="en" lang="en" style="margin:4px 0 0"><span class="tag">EN</span>Answer: ${fin.en}</p></div>`;
+  }catch(e){
+    out.className='lang-'+lang();
+    const x=e.es?e:bad('Ocurrió un error inesperado.','An unexpected error occurred.');
+    out.innerHTML=`<div class="err"><p class="es" style="margin:0">${x.es}</p><p class="en" style="margin:4px 0 0">${x.en}</p></div>`;
+  }
+}
+['2x + 3 = 11','3(x − 2) = x + 4','x/2 + 1 = 4','x² − 5x + 6 = 0','x² + 6x + 9 = 0','2x² + 4x + 5 = 0'].forEach(e=>{
+  const b=document.createElement('button');b.className='chip';b.textContent=e;b.onclick=()=>{$('eq').value=e;run()};$('chips').appendChild(b)
+});
+$('go').onclick=run;
+$('eq').addEventListener('keydown',e=>{if(e.key==='Enter')run()});
+document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  $('out').className='lang-'+b.dataset.l
+});
+/* Costo/beneficio */
+function calc(){
+  const v=id=>Math.max(0,parseFloat($(id).value)||0);
+  const al=v('al'),cu=v('cu'),co=v('co'),iv=v('iv');
+  const ing=al*cu,ut=ing-co,f=n=>Math.round(n).toLocaleString('es');
+  const pe=cu>0?Math.ceil(co/cu):'—';
+  const pb=ut>0?(iv/ut).toFixed(1)+' meses':'No se recupera';
+  const roi=iv>0?Math.round(ut*12/iv*100)+'%':'—';
+  $('res').innerHTML=`<div><b>${f(ing)}</b>Ingresos por mes (USD)</div><div><b>${f(ut)}</b>Utilidad por mes (USD)</div><div><b>${pe}</b>Alumnos para cubrir costos</div><div><b>${pb}</b>Recuperación de la inversión</div><div><b>${roi}</b>Retorno anual sobre la inversión</div>`;
+}
+document.querySelectorAll('.calc input').forEach(i=>i.addEventListener('input',calc));
+calc();run();
+</script>
+</body>
+</html>

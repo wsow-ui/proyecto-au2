@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instituto Gauss Jordán - Portada</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 800px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            border-top: 8px solid #6c1d45; /* Guinda IPN */
+            padding: 40px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .logo-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 90px;
+            height: 90px;
+            background-color: #f8f9fa;
+            border: 2px dashed #6c1d45;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #6c1d45;
+            font-size: 13px;
+            text-align: center;
+        }
+        .institution-title {
+            text-align: center;
+            flex: 1;
+            margin: 0 15px;
+        }
+        .institution-title h1 {
+            color: #6c1d45;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        .institution-title h2 {
+            color: #003366;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .card {
+            background: #fafafa;
+            border-left: 4px solid #003366;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 25px;
+        }
+        .card h3 {
+            color: #003366;
+            margin-bottom: 15px;
+            font-size: 18px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .info-item label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        .info-item span {
+            font-size: 15px;
+            color: #111;
+            font-weight: 500;
+        }
+        .full-width {
+            grid-column: span 2;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Encabezado con Logos y Nombre Institucional -->
+        <div class="header">
+            <div class="logo-box">
+                <br><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJsAAACUCAMAAACz6atrAAAAllBMVEX///9rHEBjADNqGT7n3eFmDDjczdTKsr1xKEheACqngZGASF+hdoliADHw6ez+/P1uFkLCqLKvjZuPWnGAQl11L0759vidcYPi1duuiJn07/Hs4+dZACGXaXzUwclnADe2lqS/oa6IUGhVABd8OleQYXR5LFJTAA+HSmWaZ394O1NRAAVzJEqJWWusf5R4QFRpJDxwMUbf+nhkAAAUN0lEQVR4nO2ce3ejONKHAd0AI7C4CmGERKDHyTozu9//y70lYefSSc/27OD0ec+Z+qvbceynS9KvLio6CP6xf+z/ixU//UYlSnVPkg9GU/lT72t11iQPjf0yukKPiIRp/hNvZYQglI6kEV9C17Ydj6JMhAv704VVG1sYTiyg66mm9ydjFa1JGGXB0JEV/+htBU2fenAsQ2FIhFvbOv3pLfo/ksmFh/SAHFug5pmYT5dqMDPn8SEW6sYWBOa+bMoalqD4xpZ3eZoc9CdvtCdYypCJpErDG1uZ3Y+twGo6pSx6w/ZYsNQk3ceFtYlDWlqVEvDbtLHdz295ecDH6ANbXzwvlw+73LOF3ARF+bKm92PLmyT+nG0sRuPfoqhZriq7saEQB+wr2GrS/ICt7aw7l+VzGJGo0q9sIel/ARshPIXXxhvbkNZT5LYWiskIAUNsbGiib9judhbesT0dO81Mrm5sJk1IuHkqldVk2ytbGI1f6rdkaijDg0m72sCalhvbFS2MUqeyq+HXv4dV+FVsPBWxkYHuplMWyDEW/ZmORebZUEQ8G7z3nEZXNES+im0KrRogAzlEyJ2FoSHk0DS5Z0NNdiAbm6pe2LaFvjsbaAiTih44up1TM4UJw1kdOzZig/VXsVW9LNjav41ZfRQmAtSjqs8oJCyofsB297gw0HLgyTt967ljA2PLZ2zoO7/dTUPUyMPvtfeFrejIRza0oK9a0+VjXHhhaz9j43YkX8T2Scz6c7aE6V/Dhk4f2ARevmMLUv4l++0d2x9JnBodlNEbNlQ3N+19YcMX9KV+41NISz1gu3Swn17ZQoTC79kCS76ODWLWMdOFtFWSFQIO4hs2H6FO9h1bO39hzDI5xhYfIsJftPeVDYUH674/n/srW6D5V+Qhy6kZNFay4uR2Tkv+bk1DIbdvz1bLr2xBF30BW8qGwszvY9Y7toaMvqgZslC6/G1jkw26e8wqsBhx9IOY5TXE6HgSWKfHAw1e2QJwIbFUDPf024Ff/lR7JxvgLomPFWu3euHKljcINWG0sP7XxYXJwB9stfVvrmw5FWuDvLyg6Zi1v5SNdtu73ZqSEZJNHnn1Rb7MSe8E95Nso39z6+sFcuOKeLxM4Dq+Hdi7s/Ef+i3X5digW7kQJTzOhBzKyYlJ+DMtu7/H9gcUW5l6r29wFoKWzeV54pOrVB1XFFc9G7YPwBm8fLlLg/C1BgTthUA/sCV9F09J7/0VbRGCcI7mUss2KIYrXaFXcke2CfQNvrHNtZlTbF7iqfIxi0RXfxHUzKkegqLFLD3Ete+SFArb6XifNV1OF9xZ3GJt8CGJkmvMYsGgzRq/7C+exKvRECBAP9J64rzS4LAzE91yIlV/j5OqhszKAjPGQoLexFNSrQua3virpHnbBrgcl3CCF8jqPWX48ljSob2L+qbDwMphesgYf9EQCjl4SHyHBkVJ0oxWAwhuZaXtA0GbgFz8ZhP8p5rq/5PljZy/j1nqcN32oGPAJfPWCdvcDOlJ0ORW/3GIXAWDNT+bOymv+E0evtdeVYOcRhOqM0tvx08Tng7xpNkLG/g37yKEnmR5/vOW//9q9l+fsC0Jbzoh1ZtvzCZExanOu9fatKIzxAfUtIEcq3tcMRTZR7a2FANgqdvdUZFLNpG5nU9WnuktMkCQ32qGFM6uPmd3EDg1fBJPCzpoQc/+59R2fyQcJQajZDB9caubb+67LAikUJ1/7hbsr9l3PdXolIGDHh7xrM6MdcckrkqGZ3LMyyTLzzjQp3doC7yyHFnxSb9/R7YTxKxzDeEbXkFLPuKUH0dQWziFNIxWVRPNxiIo3rKR2G20XBzX+T5sUYwn3mvgaPOBCp3XiCSms7S6icMYRVonh3Z2vfL1tc1FwutKtv3TPQJqXi9jzkD0qbZD16ATnNOpE+ayqvmaaShOatWdDJ4dLJtuaKi5XSupsd+bC4IQ1DLD0IrUMgIycSAoyoqUixY/TbjfCgNIxCMzHKOhdPWzL7CubLebVnUYd9ffvgZ1TZcLjk7pm5hVnI2woBg02765ItEgki5fPIl6vp5U9E0sxMBrw6HbHa2oIzLJmn+vIdr5Z/hW5ZVXXx2SuVgjzbpNjG99fTS1ysQLG5Zx/7ggIfk/fdTegI06FZDJ4dTLfco5k8eDqq67S0QvbOBF0/BydzL4EpCD5BO2NjvrMtbG0DIoIB0gS16ejLwdW8pvbEXQDrQkPzl98JcsBzn4jC1QmWrrUj638+NjVxHSt8dpSG+1VH7cDgNCNltIAr8Xjnr3DZdX/FO2/HFoaxcYKJUaSjyqH9a8viVqxbfbQZ18kkdKnB6fP7ul/lvWrg/fs7kaMO+VOieyPE3HZoG4FHScsvTlt+b3ITVyhZh9mvdOMvPzCxuHnPzp4QTlaMuqMrvwajwlnEcksflSq/U1Deqm92xb2bN/1CrwAWKW6yM9rf2g6SDFY9cLAQUEE9b0aVfVFhJeGb9u+P79xRE5rlASBuvuJyKXNZoHy3A7YNqKDAKELc1s9MJFr7Xout4Y26Xr6SW6BuYNG+KNoN0R9GXcnU3jIc8LbZm+EP6YMp2uv5vhTNt6pARckffRczn3zJoxZXjDs/wVbfEDSYOp53rXNS3atjW4hE91MxinxmixolOvGTtrVYssii6mpcauLg0ZS2vKUuDiVXyhqlhuu1DW8Y5sKl3n+XyEmOXmHKqslLaMXazPmX3UEAUgppOkZ2zkIbfBmMTGWlamWonrWUBxVv9RAm1L03Mqdwxc9DcC5mPWMB0NZf3Knvw8kmCPeLAlQby2ti9wg8istGtkYa0hXKQR32rUBrc6u6xiPtt9BWQr55z2xmaUuiOV0F1DkiwYrCiojqMwg1cXVWRReJQDUINn2tztzXTZ/EZdpSMgpdqVDE7b6cqWzEyOI+hbZCwT41oEzErWPczMoghxEdAHAonlktTgNdiMwmhpz+jKBnbcXdnkhXi2usTicu2T13FltWBUGFMbNkcRgcNL2WHMDBOOKn2s5sNTs1zXVN6JLZDrBFuqp/RM38yunGZA+N2kxj6PWVrC/jeww7rx0ByjBKIEQaSW+UL8mhpwo2aXO+QhrVgg2S5J7O6zWBIR0UzxnDIDbjO2LH/v1ue6CcWQJYRcezTO1YJStoVUMnl7ssPucHlJaR+HNavnrO+ck4Tt08dUwHZfEreiCKGJBeJtAIW6plra7k21tbL1UrF9T6oUShpQfJNmv2fjuM5LOE1Cy97tn+qWbEwiYLcsHIxwpsHDMnmdKOiKApvL846+K+yjMI+Nay3XgXzwq4aIazQUoi/7ObwCQWLCpohH0UTCuKnP61DBbsOvQZVs9zJ7xtOC4qHtR0AgVSBPN89oXwQrlet6g5tsoNestIJpirESWsiU8Cx/7SiNam82Z3mpIK8FNpAwEoFr4OQ2Y5mWFrYP3a44YL+5wAu0mGoIZ/l5bcDBlPmIjwj8Cy4QyPZmU72eBzMBGz6sHcgG05pK3FcpQATt5jiiA92tc73EIYmSiWYnNw9KKue4iEA2RaXo6rrft5PUGj2fuvwxqYJCtc7UABGzN5gFOQvaq4jhoEv8ZkTNUj/qx7ScUYiO+EDCNDuvJRsk6xf+x55sbLEppBgmb+ZAdmNVf5uSh99++1cZDAxiKh39boe6OfgGwR422TS4mhZ+M402NqSDQors2HRbv2kvK0xUMT/FoNkcaJeUhNUIGre0UNgrWZNN1LgJ8iSM+iCLYtjzcoJffcPmPilj+2F5yxc+WucZ17j1HT/YdoG7igmCsoc8cozdPCM6SndpGkGyGbmsXB4dDLmu6Vb4pXvXf6rmo9jY9Dmgjm11OmWB0DrxbQdRcxSNkJYkaBnwFPXFxuYnWhzbNQ/Zna1NySqcSoDflgB7Npf4AyhIy6ZyRRnC1+dqilIoEpBbOs+23vx2yHrD6Lj77WkrrSEXz/bNbSnHNpRDkGk3XG+2+Kiroh3VeNJBFTX4yqaqGxtpjOiz88f56b9tsupADWBN/120kGWTdXBXLGqrRAdj3M2HZuVJ66OSU+Q7WZ7tcGODFM7de+hLuXfmS/uiJ55NBUeQrHPpfWWXLVfMdQnJtoh4phqtk5NfOcfmVPfKBnLcwT9hGLud+720D/ARIhb9Nw4gBqDwujS6mcUmVzJlbcpRm46qqdsbG45f2YCO/yc+Z8fjvusKbEPj2BD1o6h+0RQ4TS5JMzLniUIb3XBNyZBtvRrHRtFbNoSkhPS3y/Zmw4tnY07qEwpF0yCwe94EoShsSre2ua141h4FXV785iXba6+/xwz9h73pM+3DVlRuv1FiAjuRpcCaYXcB1LgyFc/J5OgggDR5Wqknf0TkZeuHOLZoXqcIkcV/mNiZLXOziY4tBVeBhjHJcrH1OxKh6tjUMRzDdjwxOg1leWNLr2wnW+gsjhqmsSrEvl3fYeZbzEJri+PJFgxrCmF+9jOMY7RADneAxBE/nIuDlf7mQ37beoOO7cFtf8Xq8LB8Wy5mT7RW3OIpWvL8QFgA+VHWmcwNF6OGkCrtBTuvbVDz3DyrmW5srRu29H7zktPOolX5gHetZdL1Gk9pOMlijDTOSpMCIfHpx5pAkW8orfqgPIkBSVNubK7179jqo68T5L/3LwDxS6ynbuKi5KxMKdumVIFNV7wTGaWBrJXga1sbeW49G7uyHcjq6v202R0t0A/ARpBni0bIkoxKqzQ1fj4WNRknzK4iFaYexESkbfJZejbfUvVsCxNltsb7R9MhGe3DwroE2EAH8qgLFNQwl8nPhCwxOT+OYqZ5kWExcYNPkBs4tmIlNzbkJs8Kcdl9UdsFvJK3ggMbinBQHVWgcSH9+GfMDgkrlRLBIE3eR2RRa4ohuZRL7u8Bt7iQuJQuMMvul6d2tN+apzhybBw23G/aPRfrum3uZrSe+jRQecCwaY27vxGLgkWVZ+pz9Y0NXSdV97+ihLgANWft2EhXSO4FzBcDzSUkqHbpLLaSucgWpXmsQV/l9fGKW450NFQOqts3KHi2wMV1xwZJt3IKBzDPUD4/hqTeMu1MunZpGqFaVelQtfK8Xe06DfE50jLX53lO9j4Pjq2t/X4LJx0YHg+5zBYo+7rJMpc0tr3QDlEmiGg25ZmU104EOg69K+k5K9p8kJ8+dPk32WAFiWeDU0oRVIXLyGbezbV2z5+q1OitFpgJyXKoFg3ur0+2Hd3wRYSmrQzc/aoN2OwUbmwoVMWZQHlziHlnY2tUoUTFmN0685agS951Q6Xo6YUtGEAEZeH8ewe/uS7axhYm1tV6JGPW5OeJk3l+NC5KbJbXKGE6HjL2lg0EfGnOM1TcaO+2Ku2dxF/ZyHObL9GI45kpd41AKevFa/zOCOkUZEPrK5ukYDMbIOu1u09yyccDQEWz8ZOLSMMK65Kf2HnujbDm3V2y5gi8Nr5lG52Fe/cbXthqOASzbq4tPiiXZBPN6ombXn2npipGhGmyjK9stoCtJg73ebye9iWc0hyfz14XQKPajIfSQAVvP7x5hLeqmb9hm/0e23+iZmMraZLogHbbk5tkLUDt1oKQmH3sIlgOejG+ZVt8Fo7vcbvgNWSJm6W5XFu3UG4JrvUJLeyjJNDItcnJG7aa++W0y53YMBw1UdlrFby0rVYdQYv+6DfsKv/wykb4Vsu4H0BOfh82Z/J8G1zg8IJ0QcKwD/FR+s70xkZm5mN9jdu2LSi5w6pe2Yby9mQkOuogHzn8VX+AM2h2Kji6LmLkgq/LLevKWfLx5OzE1lr98tSmG1F0LWiyUMbeqQi9/H64sRH3MEPpcqRSgLH4Dou6sdHZx9MND9QtGFYeklhoQV/EXukq86m4Z0OpG9AYYWm3e5LLHeYZ6e/tMLS40qCrzXXijmdtoFYOJzLT2kC14IyyNMu2ywbP1tRgqOHGf4zdP+vNbd89Po5dlvYTyKqcrnAu+xUxR9GpErbv3QVquXZbQ/+6pv7hGfgnzY/uA/bvWqpOWwsRXTJLmRuq769TH7xzg+0jiQiBpLZa12qpzYrCVzY/597O+Nlg6Wz3yTwKaQUkt8y1VluXd6vb5Rn3I56yPBDOeZLw2bL5Nq2yndPEOLbBjntDXU3OBatKrVm5Qo1F85y+ntYw9Z03CpV+KaQsb9eVNzZy8Gyy2b/b4K0dy6KlwghIheRlab4dXy5roVw9ZnrwVVdOszB6/QnpHJvrvgJbsNzn0SeQ3Lpyj0wUiqYVHga8vBI4Ot6sWZqtzRS9fZ2sNgG9cYNowFY+34ktKFhXzfNcZT5plVvZ+cZ5buyGvAVzDuvCKYT0YJb5QbY6udtDH24KfxiuuaHrHpGx5O9h3huU+6xi1GXsmjVLvSR3ynrfm7sHChMZCPIncKi2NIfiAAoEo13intxrw31gI+6iT/yAza02OWN5ZlRSHCgbDrq52xOU76zootD3HCj6DA6RcHtON6uYsBbemP+HBY930pDvTR692wI9ORL0vdNWqolj07XOCzjccqzzL2MLstMhTbPU3fE13YW/m5ONbOviBgHdwOO5GtdzbfJA32GO/HNTZZmmaV8Td0Vf+OfHQp5wL8loHtcRqtjo4opWhbGfJN+/JfhD8+kQ1HogJYV7ms79jxdMy9odgs6U/v+uIZcZjqqCyj+tu69a0ReDWtUP1gMbityaOQcmLvq7Ri/vZF81Cf9jtfd4QOa/GKypV1TH5i8QXObGt0fqYzS67Gi8aPVVO+2dnTm65Bsbqd0L2QtbME5nSHibPSe2/pLp6mGBtE47vfNDGS7nvLL1f7hRbva1/znjO2OP86Gu3an0TQX7ysYOXxIH/szaVuVKnBAyrsNmJneD5H9glzvmHX/B8mYBa8DcsLRPPhjqf8kR+Gi5t2HI9QH4LuHlEta/6hD82NSL/WqSf+wf+2v2f7d4wPBXP33SAAAAAElFTkSuQmCC" alt="Logo IPN" width="90" height="90">
+            </div>
+
+            <div class="institution-title">
+                <h1>Instituto Gauss Jordán</h1>
+                <h2>Instituto Politécnico Nacional</h2>
+            </div>
+
+            <div class="logo-box">
+                <br><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgTalRpUtvM_d6scn9huxuETqKfecZbsKlP_42wvO7Bw&s=10" alt="Logo IPN" width="90" height="90">
+            </div>
+        </div>
+
+        <!-- Portada con Datos de la Materia y Alumno -->
+        <div class="content">
+            <div class="card">
+                <h3>Datos Académicos</h3>
+                <div class="info-grid">
+                    <div class="info-item full-width">
+                        <label>Instituto Gauss Jordán</label>
+                        <span>PROYECTO AULA</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Alumnos</label>
+                        <span><p>Vivian Vidal Villar
+
+<p>Sebastian Delgadillo Gonzalez
+
+<p>Manuel Alejandro Saavedra Godinez
+
+<p>Ariadna Paola Alvarado Moran
+
+<p>Valeria Salazar Acuña
+
+<p>Angelo Eduardo Hernandez Pacheco
+
+<p>Barbara Ivonne Gonzalez Robles
+
+<p>Eduardo Alejandro Cortes Vargas
+
+<p>Ariel Alejandro Oliveros Pérez</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Grupo</label>
+                        <span>BI-1501</span>
+                    </div>
+                    <div class="info-item full-width">
+                        <label>Docente / Profesor</label>
+                        <span>Ricardo Rodrigo Sedeño Cruz</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="border-left-color: #6c1d45;">
+                <h3>ECUACIONES</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+        </div>
+        </div>
+        </div>
+
+ <div class="card" style="border-left-color: #6c1d45;">
+                                 <div class="info-grid">
+                        <span>OPCION 1</span>
+                        <span>OPCION 2</span>
+                 
+<a href="htmlE.html" style="background-color: blue; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+  IR A PÁGINA
+
+<a href="htmlA.html" style="background-color: red; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+ir a pagina
+</a> 
+            </div>
+        </div>
+
+
+<br>
+        <div class="footer">
+            Mi primer app.html &bull; Instituto Especializado en Computación y Administración Gauss Jordán A.C.
+        </div>
+    </div>
+
+</body>
+</html>
